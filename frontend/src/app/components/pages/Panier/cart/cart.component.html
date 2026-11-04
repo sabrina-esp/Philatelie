@@ -1,0 +1,27 @@
+<h3>Panier</h3>
+
+<div class="cart">
+  <div class="cart-item" *ngFor="let item of items">
+    <div class="cart-item-content">
+      <a [routerLink]="['/produit', item.produit.id]">
+        <span class="item-name">{{ item.name }}</span>
+      </a>
+      <span class="item-price">{{ item.prix | currency : "EUR" }}</span>
+    </div>
+    <Select
+      #quantitySelect
+      [value]="item.quantite"
+      (change)="changeQuantity(item, $event)"
+    >
+      <option>1</option>
+      <option>2</option>
+      <option>3</option>
+    </Select>
+    <div>
+      <button class="remove-button" (click)="removeCart(item)">
+        Remove
+      </button>
+    </div>
+  </div>
+</div>
+  

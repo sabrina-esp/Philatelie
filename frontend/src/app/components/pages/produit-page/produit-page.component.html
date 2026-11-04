@@ -1,0 +1,46 @@
+<!-- <app-not-found
+  [visible]="!produit"
+  notFoundMessage="produit Not Found"
+  resetLinkText="Back To Homepage">
+</app-not-found> -->
+<div *ngIf="produit" class="container">
+  <img [src]="produit.imageUrl" [alt]="produit.nom" />
+
+  <div class="details">
+    <div class="header">
+      <span class="name">
+        {{ produit.nom }}
+      </span>
+      <span class="favorite {{ produit.favoris ? '' : 'not' }}">❤</span>
+    </div>
+    <div class="stars">
+      <input
+        ejs-rating
+        id="rating"
+        [value]="produit.stars"
+        precision="Exact"
+        labelPosition="Left"
+        [emptyTemplate]="emptyTemplate"
+      />
+      <ng-template #emptyTemplate>
+        <span class="custom-font sf-rating-heart"></span>
+      </ng-template>
+    </div>
+    <div class="product-item-footer">
+      <div class="origins">
+        <!-- <span *ngFor="let origin of produit.origine">
+        {{origin}}
+      </span> -->
+        {{ produit.origine }}
+      </div>
+    </div>
+
+    <div class="price">
+      <span>
+        {{ produit.prix | currency }}
+      </span>
+    </div>
+
+    <button (click)="addToCart(produit)">Acheter</button>
+  </div>
+</div>

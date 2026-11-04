@@ -1,0 +1,48 @@
+<!-- <app-search></app-search>
+<app-tags></app-tags>
+<app-not-found
+[visible]="!produits || !produits.length"
+resetLinkText="Reset Search">
+</app-not-found> -->
+<input type="text" placeholder="Filter par nom produit" #filter />
+<button class="btn-custom" type="button" (click)="filterResults(filter.value)">
+  Search
+</button>
+<ul>
+  <li *ngFor="let Product of produits">
+    <a routerLink="/produit/{{ Product.id }}">
+      <img [src]="Product.imageUrl" [alt]="Product.nom" />
+      <div class="content">
+        <div class="name text-black">
+          {{ Product.nom }}
+        </div>
+        <!-- if it's favorite put nothing else not -->
+        <!-- <span class="favorite {{ Product.favoris ? '' : 'not' }}"> ❤ </span> -->
+        <div class="stars">
+          <input
+            autocomplete="off"
+            ejs-rating
+            id="rating"
+            [value]="Product.stars"
+            precision="Exact"
+            labelPosition="Left"
+            [emptyTemplate]="emptyTemplate"
+          />
+          <ng-template #emptyTemplate>
+            <span class="custom-font sf-rating-heart"></span>
+          </ng-template>
+        </div>
+        <div class="product-item-footer">
+          <div class="origins">
+            {{ Product.origine }}
+          </div>
+        </div>
+        <div class="price">
+          <span>
+            {{ Product.prix | currency }}
+          </span>
+        </div>
+      </div>
+    </a>
+  </li>
+</ul>

@@ -1,0 +1,38 @@
+<div class="login-container">
+  <div class="login-card">
+    <app-title title="Connexion"></app-title>
+
+    <form [formGroup]="loginForm" (ngSubmit)="submit()">
+      <div class="form-group">
+        <label for="email">Email</label>
+        <input
+          type="email"
+          id="email"
+          placeholder="Entrez votre email"
+          formControlName="email"
+          class="form-input"
+        />
+        <div class="error" *ngIf="fc.email.errors && isSubmitted">
+          <div *ngIf="fc.email.errors.required">ne doit pas être vide</div>
+          <div *ngIf="fc.email.errors.email">email n'est pas correct</div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="password">Mot de passe</label>
+        <input
+          type="password"
+          id="password"
+          placeholder="Entrez votre mot de passe"
+          formControlName="password"
+          class="form-input"
+        />
+        <div class="error" *ngIf="fc.password.errors && isSubmitted">
+          <div *ngIf="fc.password.errors.required">ne doit pas être vide</div>
+        </div>
+      </div>
+
+      <button type="submit" class="btn-login">Se connecter</button>
+    </form>
+  </div>
+</div>

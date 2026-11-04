@@ -1,0 +1,91 @@
+header {
+  position: relative;
+  background: white;
+  padding: 0;
+  border-bottom: 1px solid #ffd100;
+}
+
+a {
+  color: #0033a0;
+}
+
+a:hover {
+  background: #406fce;
+  color: white;
+  cursor: pointer;
+}
+
+.container {
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+}
+
+a.logo {
+  font-weight: bold;
+  padding: 1rem;
+}
+
+ul {
+  display: flex;
+  list-style-type: none;
+  margin: 0;
+}
+
+ul a {
+  padding: 1rem;
+  display: inline-block;
+}
+
+a span {
+  background: #ffd100;
+  color: white;
+  padding: 0.1rem 0.45rem;
+  border-radius: 100rem;
+  font-size: 0.9rem;
+}
+
+.menu-container {
+  position: relative;
+}
+
+.menu {
+  position: absolute;
+  z-index: 1;
+  background: whitesmoke;
+  display: none;
+}
+
+.menu-container:hover .menu {
+  display: block;
+}
+
+.menu a {
+  width: 100%;
+  min-width: 8rem;
+}
+html,
+body {
+  height: 100%; /* Assure que le corps occupe toute la hauteur de la page */
+  margin: 0; /* Supprime les marges par défaut */
+}
+
+.header-content {
+  display: flex; /* Utilise Flexbox pour aligner le titre et le logo */
+  justify-content: space-between; /* Aligne le titre à gauche et le logo à droite */
+  width: 100%; /* Utilise toute la largeur disponible */
+}
+
+.title {
+  font-size: 24px; /* Taille de la police pour le titre */
+}
+
+.logo-container {
+  display: flex; /* Utilise Flexbox pour centrer le logo */
+  justify-content: center; /* Centre le logo horizontalement dans son conteneur */
+}
+
+.logo {
+  width: 80px; /* Ajuste la largeur du logo selon tes besoins */
+  height: auto; /* Conserve les proportions de l'image */
+}
