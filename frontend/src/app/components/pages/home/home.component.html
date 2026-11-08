@@ -19,18 +19,7 @@ resetLinkText="Reset Search">
         <!-- if it's favorite put nothing else not -->
         <!-- <span class="favorite {{ Product.favoris ? '' : 'not' }}"> ❤ </span> -->
         <div class="stars">
-          <input
-            autocomplete="off"
-            ejs-rating
-            id="rating"
-            [value]="Product.stars"
-            precision="Exact"
-            labelPosition="Left"
-            [emptyTemplate]="emptyTemplate"
-          />
-          <ng-template #emptyTemplate>
-            <span class="custom-font sf-rating-heart"></span>
-          </ng-template>
+          ★ {{ Product.stars }} / 5
         </div>
         <div class="product-item-footer">
           <div class="origins">

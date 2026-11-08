@@ -13,6 +13,7 @@ import { TitleComponent } from '../../partials/title/title.component';
 export class LoginPageComponent implements OnInit {
   loginForm!: FormGroup;
   isSubmitted = false;
+  message = '';
   constructor(private formBuilder: FormBuilder) {}
   ngOnInit(): void {
     this.loginForm = this.formBuilder.group({
@@ -27,7 +28,7 @@ export class LoginPageComponent implements OnInit {
   submit() {
     this.isSubmitted = true;
     if (this.loginForm.invalid) return;
-    alert(`email:${this.fc.email.value},
-      password:${this.fc.password.value}`);
+    // Authentication is not wired to the UI in this catalog demo.
+    this.message = 'Connexion indisponible dans cette démonstration.';
   }
 }

@@ -11,8 +11,12 @@ export class CartService {
   constructor() {}
   //method appends a product to an array of items.
   addToCart(produit: Produit) {
-    const cartItem = new CartItem(produit );
-    this.cartItems.push(cartItem);
+    const existing = this.cartItems.find(item => item.produit.id === produit.id);
+    if (existing) {
+      this.changeQuantity(existing.quantite + 1, existing);
+    } else {
+      this.cartItems.push(new CartItem(produit));
+    }
   }
   getCartItems() {
     return this.cartItems;
@@ -24,6 +28,7 @@ export class CartService {
 
   changeQuantity(quantite: number, cartItem: CartItem) {
     if (!cartItem) return;
+    if (!Number.isInteger(quantite) || quantite < 1) return;
     cartItem.quantite = quantite;
     cartItem.prix = quantite * cartItem.produit.prix;
   }

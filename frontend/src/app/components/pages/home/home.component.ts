@@ -1,22 +1,20 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ActivatedRoute, RouterModule } from '@angular/router';
-import { RatingModule } from '@syncfusion/ej2-angular-inputs';
 import { Produit } from '../../../Shared/models/Produit';
 import { ProduitsService } from '../../../services/produits.service';
-import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import { producerNotifyConsumers } from '@angular/core/primitives/signals';
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [CommonModule, RouterModule, RatingModule, FontAwesomeModule],
+  imports: [CommonModule, RouterModule],
 
   templateUrl: './home.component.html',
   styleUrl: './home.component.css',
 })
 export class HomeComponent {
   produits: Produit[] = [];
+  private allProduits: Produit[] = [];
   constructor(
     private produitservice: ProduitsService // activatedRoute: ActivatedRoute
   ) {
@@ -27,6 +25,7 @@ export class HomeComponent {
     // let produitObservable:Observable<Produit[]>;
     this.produitservice.getAll().subscribe({
       next: (data: Produit[]) => {
+        this.allProduits = data;
         this.produits = data;
       },
       error: (err) => {
@@ -38,21 +37,9 @@ export class HomeComponent {
   }
   ngOnInit(): void {}
   filterResults(text: string) {
-    if (!text) {
-      this.produitservice.getAll().subscribe({
-        next: (data: Produit[]) => {
-          this.produits = data;
-        },
-        error: (err) => {
-          console.error('Error fetching products', err);
-        }
-      });
-      
-    } else {
-      this.produits = this.produits.filter((Produit) =>
-        Produit.nom.toLowerCase().includes(text.toLowerCase())
-      );
-    }
+    this.produits = this.allProduits.filter((produit) =>
+      produit.nom.toLowerCase().includes(text.trim().toLowerCase())
+    );
 
    
   }

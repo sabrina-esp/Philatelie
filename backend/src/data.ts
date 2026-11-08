@@ -39,7 +39,7 @@ export const sample_produits: any[] = [
     prix: 5.5,
     favoris: false,
     origine: "Tunisie",
-    stars: 5.5,
+    stars: 5.0,
     imageUrl: "assets/timbre3.jpg",
   },
   {

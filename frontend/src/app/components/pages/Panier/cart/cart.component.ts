@@ -21,12 +21,6 @@ export class CartComponent {
   ngOnInit() {
     this.items = this.cartService.getCartItems();
     }
-    changeQuantity1(item: CartItem, quantity: number): void {
-      const index = this.items.findIndex(cartItem => cartItem.produit.id ===cartItem.produit.id);
-      if (index !== -1) {
-        this.items[index].quantite = quantity;
-      }
-    }
     changeQuantity(item: CartItem, event: Event) {
       const selectElement = event.target as HTMLSelectElement;
       const newQuantity = parseInt(selectElement.value, 10);  // Récupérer la nouvelle quantité
